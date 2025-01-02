@@ -1,0 +1,10 @@
+services:
+
+  langchain-tutorial:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: langchain-tutorial
+    hostname: langchain-tutorial
+    restart: unless-stopped
+

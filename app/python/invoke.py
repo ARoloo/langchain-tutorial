@@ -6,4 +6,4 @@ llm = ChatOpenAI(
     temperature=0.7
 )
 response = llm.invoke("Hi, wie geht es dir?")
-print(response)
+print(response.content)

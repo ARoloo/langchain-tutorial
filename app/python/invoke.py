@@ -1,8 +1,12 @@
-from langchain_openai import ChatOpenAI
+import os
+from dotenv import load_dotenv
+from langchain_mistralai import ChatMistralAI
 
-llm = ChatOpenAI(
-    api_key='YOUR_API_KEY',
-    model='gpt-4o-mini',
+load_dotenv()
+
+llm = ChatMistralAI(
+    api_key=os.getenv('API_KEY'),
+    model=os.getenv('MODEL'),
     temperature=0.7
 )
 response = llm.invoke("Hi, wie geht es dir?")

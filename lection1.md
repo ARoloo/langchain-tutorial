@@ -1,22 +1,26 @@
 # Lektion-1
 
 ## Einleitung
-Herzlich willkommen! 😊 In dieser Datei erfahren Sie, wie Sie ein LLM-Modell (Large Language Model) mithilfe der `ChatOpenAI`-Klasse aus dem `langchain_openai`-Modul effektiv nutzen können. Diese Anleitung führt Sie durch die notwendigen Schritte, um die Bibliothek zu importieren, das Modell zu instanziieren und Anfragen zu senden. Außerdem lernen Sie, wie Sie Streaming- und Batch-Anfragen verwenden können. 🚀✨
+Herzlich willkommen! 😊 In dieser Datei erfahren Sie, wie Sie ein LLM-Modell (Large Language Model) mithilfe der `MistalAi`-Klasse effektiv nutzen können. Diese Anleitung führt Sie durch die notwendigen Schritte, um die Bibliothek zu importieren, das Modell zu instanziieren und Anfragen zu senden. Außerdem lernen Sie, wie Sie Streaming- und Batch-Anfragen verwenden können. 🚀✨
 
 ### 1. Importieren der Bibliothek
-Zuerst müssen wir die `ChatOpenAI`-Klasse aus dem `langchain_openai`-Modul importieren. Diese Klasse fungiert als Wrapper für die OpenAI-API und ermöglicht die Interaktion mit den Modellen von OpenAI.
+Zuerst müssen wir die `ChatMistralAI`-Klasse importieren. Diese Klasse ermöglicht die Interaktion mit den Modellen von Mistal.
 
 ```python
-from langchain_openai import ChatOpenAI
+import os
+from dotenv import load_dotenv
+from langchain_mistralai import ChatMistralAI
 ```
 
 ### 2. Instanziierung des Modells
-Nun erstellen wir ein Objekt `llm`, indem wir die `ChatOpenAI`-Klasse instanziieren. Hierbei müssen Sie Ihren API-Schlüssel, das Modell und die Temperatur angeben, um auf die OpenAI-Dienste zugreifen zu können. 🔑🌟
+Zuerst laden wir die Umgebungsvariablen aus der `.env`-Datei und erstellen dann ein Objekt `llm`, indem wir die `ChatMistralAI`-Klasse instanziieren. Hierbei müssen Sie sicherstellen, dass die Umgebungsvariablen `API_KEY` und `MODEL` in Ihrer `.env`-Datei definiert sind. 🔑🌟
 
 ```python
-llm = ChatOpenAI(
-    api_key='YOUR_API_KEY',
-    model='gpt-4o-mini',
+load_dotenv()
+
+llm = ChatMistralAI(
+    api_key=os.getenv('API_KEY'),
+    model=os.getenv('MODEL'),
     temperature=0.7
 )
 ```
@@ -33,7 +37,7 @@ print(response.content)
 Die Methode `stream` ermöglicht es uns, die Antwort des Modells in Echtzeit zu empfangen. Anstatt die gesamte Antwort auf einmal zu erhalten, wird die Antwort in Teilen (Chunks) zurückgegeben. Dies ist besonders nützlich, wenn die Antwort lang ist oder wenn Sie eine sofortige Rückmeldung wünschen. ⏳📦
 
 ```python
-for chunk in llm.stream("Was soll ich lernen um eine ki experte zu werden?"):
+for chunk in llm.stream("Was soll ich lernen, um ein KI-Experte zu werden?"):
     print(chunk.content, end="", flush=True)
 ```
 
@@ -41,7 +45,7 @@ for chunk in llm.stream("Was soll ich lernen um eine ki experte zu werden?"):
 Mit der Methode `batch` können Sie mehrere Prompts gleichzeitig senden und die Antworten in einer Liste erhalten. Dies ist effizient, wenn Sie mehrere Anfragen in einem einzigen Aufruf verarbeiten möchten. 📊📬
 
 ```python
-responses = llm.batch(["Hi, wie geht es dir?", "Was soll ich lernen um eine ki expert zu wreden?"])
+responses = llm.batch(["Hi, wie geht es dir?", "Was soll ich lernen, um ein KI-Experte zu werden?"])
 for response in responses:
     print(response.content)
 ```
@@ -53,4 +57,4 @@ Schließlich geben wir den Inhalt der Antwort, die das Modell zurückgibt, aus. 
 print(response.content)
 ```
 
-Viel Spaß beim Experimentieren mit dem LLM-Modell! 🎉🎈
+Viel Spaß beim Experimentieren mit dem LLM-Modell von Mistal! 🎉🎈

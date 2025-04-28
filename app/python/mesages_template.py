@@ -1,11 +1,11 @@
 import os
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
+from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import ChatPromptTemplate
 
 load_dotenv()
 
-llm = ChatOpenAI(
+llm = ChatMistralAI(
     api_key=os.getenv('API_KEY'),
     model=os.getenv('MODEL'),
     temperature=0.7

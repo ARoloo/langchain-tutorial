@@ -1,4 +1,4 @@
-# Lektion-1
+# Lektion1
 
 ## Einleitung
 Herzlich willkommen! 😊 In dieser Datei erfahren Sie, wie Sie ein LLM-Modell (Large Language Model) mithilfe der `MistalAi`-Klasse effektiv nutzen können. Diese Anleitung führt Sie durch die notwendigen Schritte, um die Bibliothek zu importieren, das Modell zu instanziieren und Anfragen zu senden. Außerdem lernen Sie, wie Sie Streaming- und Batch-Anfragen verwenden können. 🚀✨

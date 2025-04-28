@@ -1,13 +1,17 @@
-from langchain_openai import ChatOpenAI
+import os
+from dotenv import load_dotenv
+from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import ChatPromptTemplate
 
-llm = ChatOpenAI(
-    api_key='YOUR_API_KEY',    
-    model='gpt-4o-mini',
+load_dotenv()
+
+llm = ChatMistralAI(
+    api_key=os.getenv('API_KEY'),
+    model=os.getenv('MODEL'),
     temperature=0.7
 )
 
-prompt_template = ChatPromptTemplate.from_messages(    
+prompt_template = ChatPromptTemplate.from_messages(
     [
         ("system","Reagiert auf den Nutzer als Pirat, mit Emojis, wenn der Kontext es zulässt."),
         ("human", "{input}")

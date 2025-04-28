@@ -1,4 +1,4 @@
-# Lektion-2
+# Lektion2
 
 ## Einführung
 In dieser Lektion werden wir uns mit der Verwendung der `ChatPromptTemplate`-Klasse
